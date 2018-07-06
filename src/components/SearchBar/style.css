@@ -7,14 +7,26 @@
     position: relative;
     transform: translateY(5px);
 }
+
 .moreImg {
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     width:20px; 
     height:20px;
 }
 
+.moreImg.iClosed{
+}
+
+.moreImg.iOpened{
+    transform: rotate(135deg);
+}
+
 .imgContainer:hover > .moreImg {
     transform: rotate(90deg);
+}
+
+.imgContainer:hover > .moreImg.iOpened {
+    transform: rotate(135deg);
 }
 
 .filter {

@@ -41,7 +41,7 @@ export default class SearchBar extends Component {
                 <Submit type='submit'>Search</Submit>
 
                 <div className='imgContainer'>
-                    <img className='moreImg' src={require('./add.png')} alt='more' onClick={(e) => this.handleClick(e)}/>
+                    <img className={this.state.filtersOpened ? 'moreImg iOpened' : 'moreImg iClosed' } src={require('./add.png')} alt='more' onClick={(e) => this.handleClick(e)}/>
                 </div>
 
                 <div className={this.state.filtersOpened ? 'filter opened' : 'filter closed' }>
