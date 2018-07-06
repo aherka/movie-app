@@ -48,14 +48,14 @@ export default class SearchBar extends Component {
 
                     <p>Type</p>
                     <select name="type" className={this.state.filtersOpened ? 'box opened' : 'box closed' }>
-                        <option value="any">Any</option>
+                        <option value="">Any</option>
                         <option value="movie">Movie</option>
                         <option value="series">Series</option>
                         <option value="episode">Episode</option>
                     </select>
                     <p>Year</p>
                     <select name="year" className={this.state.filtersOpened ? 'box opened' : 'box closed' }>
-                        <option value="any">Any</option>
+                        <option value="">Any</option>
                         {yearOptions}
                     </select>
 

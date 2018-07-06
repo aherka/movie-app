@@ -14,9 +14,6 @@
     height:20px;
 }
 
-.moreImg.iClosed{
-}
-
 .moreImg.iOpened{
     transform: rotate(135deg);
 }

@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react'
 import SearchBar from '../../components/SearchBar';
 import MovieItem from '../../components/MovieItem';
 
-const API = 'http://www.omdbapi.com/?apikey=c38f2b3b&s=';
+const API = 'http://www.omdbapi.com/?apikey=c38f2b3b';
 
 export default class MovieContainer extends Component {
 
@@ -10,9 +10,9 @@ export default class MovieContainer extends Component {
         data: [],
         info: {id:'',data:{}},
         response: true,
+        detailed: false,
         sortYear: 'none',
-        sortName: 'none',
-        detailed: false
+        sortName: 'none'
     };
 
     handleSubmit(e) {
@@ -28,16 +28,10 @@ export default class MovieContainer extends Component {
         const yearQuery = e.target.year.value;
 
         if (searchQuery === '') {
-            //alert('Enter a movie name');
             this.setState({response: false})
         }
         else {
-            let query = searchQuery;
-            if(typeQuery !== "any")
-                query += "&type=" + typeQuery;
-            if(yearQuery !== "any")
-                query += "&y=" + yearQuery;
-            fetch(API + query)
+            fetch(API + `&s=${searchQuery}&y=${yearQuery}&type=${typeQuery}`)
                 .then(response => response.json())
                 .then(val => 
                     {
@@ -50,7 +44,6 @@ export default class MovieContainer extends Component {
                     }
                 )
         }
-            
     }
 
     handleSortChange(sortName, sortType) {
@@ -62,15 +55,14 @@ export default class MovieContainer extends Component {
 
     handleMovieClick(index, detailed) {
         this.setState({detailed: detailed});
-        fetch('http://www.omdbapi.com/?apikey=c38f2b3b&i=' + index)
+        fetch(API + `&i=${index}`)
                 .then(response => response.json())
                 .then(val => 
                     {
                         if(val.Response === "True")
                             this.setState({ info: {id:index,data:val}})
-                        else {
+                        else 
                             alert(val.Error);
-                        }
                     }
                 )
     }
@@ -112,15 +104,6 @@ export default class MovieContainer extends Component {
             );
 
         }
-
-        // const movieID = this.state.info.id;
-        // if(movieID !== '') {
-        //     console.log(movieID)
-        //     movieItems.splice(movieItems.findIndex((movie)=>{console.log(movie);return movie.props.imdbID === movieID}),0,<MovieInfo name={this.state.info.data.Title}/>)
-        // }
-
-        //console.log(movieItems);
-        //movieItems.splice(movieItems.indexOf(),0,<p>asd</p>)
 
         return (
             <Fragment>

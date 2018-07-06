@@ -5,7 +5,7 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div className="App" style={{margin:10}} >
+      <div className="App">
         <MovieContainer />
       </div>
     );
