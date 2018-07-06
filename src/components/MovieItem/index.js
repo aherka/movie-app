@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { Div } from '../MovieItem/DivStyle';
 import { InfoDiv } from '../MovieItem/InfoStyle';
-import './style.css'
 
 import {Link} from 'react-router-dom'
 
