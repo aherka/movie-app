@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { RatingBar } from './RatingBarStyle';
+import {Motion, spring} from 'react-motion';
 
 
 
@@ -17,12 +18,15 @@ export default class Rating extends Component {
     }
     
     render() {
-        const {source, value} = this.props;
+        const {source} = this.props;
 
         return(
             <div className='ratingDiv'>
-                <svg class="ratingBarSvg" width="100" height="100">
-                    <RatingBar rating={this.toRate(value)} d="M50 95 A45 45 1 1 1 51 95z" strokeWidth="8" fill="none" />
+                <svg className="ratingBarSvg" width="100" height="100">
+                    
+                    <Motion defaultStyle={{x: 0}} style={{x: spring(this.toRate(this.props.value), {stiffness: 60, damping: 15})}}>
+                    {value => <RatingBar rating={value.x} d="M50 95 A45 45 1 1 1 51 95z" strokeWidth="8" fill="none" />}
+                    </Motion>
                     
                 </svg>
                 <img className='ratingImg' src={source==='Metacritic'
@@ -30,7 +34,7 @@ export default class Rating extends Component {
                     : source==='Rotten Tomatoes'
                         ? require('./Logo/rotten.png')
                         : require('./Logo/imdb.png')} alt='rating'/>
-                <p className='ratingValue'>{value}</p>
+                <p className='ratingValue'>{this.props.value}</p>
             </div>
         );
     }
