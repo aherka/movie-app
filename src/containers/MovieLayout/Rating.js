@@ -24,8 +24,8 @@ export default class Rating extends Component {
             <div className='ratingDiv'>
                 <svg className="ratingBarSvg" width="100" height="100">
                     
-                    <Motion defaultStyle={{x: 0}} style={{x: spring(this.toRate(this.props.value), {stiffness: 60, damping: 15})}}>
-                    {value => <RatingBar rating={value.x} d="M50 95 A45 45 1 1 1 51 95z" strokeWidth="8" fill="none" />}
+                    <Motion defaultStyle={{x: 0}} style={{x: spring(this.toRate(this.props.value), {stiffness: 80, damping: 30})}}>
+                    {value => <RatingBar rating={value.x} d="M50 95 A45 45 1 1 1 51 95z" strokeWidth="8" fill="none" strokeLinecap="round"/>}
                     </Motion>
                     
                 </svg>
