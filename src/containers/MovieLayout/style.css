@@ -48,24 +48,43 @@
 }
 
 .ratingDiv {
+    margin: 0 20px;
+    width: 100px;
+    height: 100px;
     display: inline-block;
+    position: relative;
+    text-align: center;
 }
+
 
 .ratingImg {
     display: inline-block;
+    position: absolute;
     height: 48px;
     width: 48px;
+    left: 26px;
+    top: 26px;
+}
+
+.ratingBarSvg {
+    display: inline-block;
+    top: 0;
+    left: 0;
+    position: absolute;
 }
 
 .ratingValue {
-    display: block;
-    margin: 16px 8px;
-    margin-left: 8px;
-    margin-top: 16px;
-    margin-bottom: 16px;
-    margin-right: 32px;
-
-    color: #731eb1;
+    background-color: #731eb1;
+    border-radius: 6px;
+    color: white;
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    top: 80px;
+    margin: 0;
+    margin-left: -25px;
+    padding: 2px;
+    width: 50px;
+    font-size: 0.8em; 
     font-weight: 700;
-    float: right;
 }
